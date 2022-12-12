@@ -58,7 +58,7 @@ def index2(request):
         text = text.decode()
     except Exception as e:
         message = "check your filename and ensure it doesn't have any space or check if it has any text"
-        error = e
+        error = str(e)
 
         #form.save()
                 # image = image.name
