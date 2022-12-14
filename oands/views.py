@@ -49,6 +49,7 @@ def index2(request):
     request_msg = ""
     img_msg = ""
     error = ""
+    text2 = ""
     # if request.method == 'POST':
     # form = ImageUpload(request.POST, request.FILES)
     # if form.is_valid():
@@ -59,6 +60,7 @@ def index2(request):
         text = pytesseract.image_to_string(img, lang='kor+eng')
         text = text.encode("ascii", "ignore")
         text = text.decode()
+        text2 = Summerization(text)
     except Exception as e:
         message = "check your filename and ensure it doesn't have any space or check if it has any text"
         error = str(e)
@@ -107,6 +109,7 @@ def index2(request):
 
     context = {
         'text': text,
+        'text2' : text2,
         'message': message,
         'img_msg': img_msg,
         # 'eng_to_kor': eng_to_kor,
